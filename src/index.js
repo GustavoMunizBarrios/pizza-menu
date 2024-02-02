@@ -58,11 +58,6 @@ function App() {
 }
 
 function Header() {
-  /*   const style = {
-    color: "red",
-    fontSize: "48px",
-    textTransform: "uppercase",
-  }; */
   const style = {};
 
   return (
@@ -88,34 +83,21 @@ function Menu() {
       ) : (
         <p>We're still working on our menu, Please come back later</p>
       )}
-
-      {/*       <Pizza
-        name="Pizza Spinaci"
-        ingredient="Tomato, mozarella, spinach, and ricotta cheese"
-        photoName="pizzas/spinaci.jpg"
-        price={10}
-      />
-      <Pizza
-        name="Pizza Funghi"
-        ingredient="Tomato, mushrooms"
-        photoName="pizzas/funghi.jpg"
-        price={12} 
-      /> */}
     </main>
   );
 }
-function Pizza(props) {
-  console.log(props);
+function Pizza({ pizzaObj }) {
+  console.log(pizzaObj);
 
-  if (props.pizzaObj.soldOut) return null;
+  if (pizzaObj.soldOut) return null;
 
   return (
     <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.price}</span>
       </div>
     </li>
   );
@@ -139,12 +121,10 @@ function Footer() {
     </footer>
   );
 }
-function Order(props) {
+function Order({ closeHour }) {
   return (
     <div className="order">
-      <p>
-        We're open until {props.closeHour}:00. Come visit us or order online.
-      </p>
+      <p>We're open until {closeHour}:00. Come visit us or order online.</p>
       <button className="btn">Order</button>
     </div>
   );
